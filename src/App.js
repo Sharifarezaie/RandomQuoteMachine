@@ -1,5 +1,5 @@
-import * as React from 'https://cdn.skypack.dev/react@17.0.1';
-import * as ReactDOM from 'https://cdn.skypack.dev/react-dom@17.0.1';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 const quoteData = [
   { text: `“The purpose of our lives is to be happy.”`, author: 'Dalai Lama' },
@@ -11,7 +11,7 @@ const quoteData = [
 
 const QuoteBox = ({ quote, handleNewQuote }) => (
   <div id="quote-box">
-    <p id="text">{quote.text}</p> 
+    <p id="text">{quote.text}</p>
     <h2 id="author">{quote.author}</h2>
     <div className="actions">
       <button
