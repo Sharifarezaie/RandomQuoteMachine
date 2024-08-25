@@ -3,11 +3,11 @@ import * as ReactDOM from 'react-dom/client'; // Correct import for React 18
 import './App.css';
 
 const quoteData = [
-  { text: `“The purpose of our lives is to be happy.”`, author: 'Dalai Lama' },
-  { text: `“Life is what happens when you’re busy making other plans.”`, author: 'John Lennon' },
-  { text: `“Get busy living or get busy dying.”`, author: 'Stephen King' },
-  { text: `“You only live once, but if you do it right, once is enough.”`, author: 'Mae West' },
-  { text: `“Many of life’s failures are people who did not realize how close they were to success when they gave up.”`, author: 'Thomas A. Edison' },
+  { text: '“The purpose of our lives is to be happy.”', author: 'Dalai Lama' },
+  { text: '“Life is what happens when you’re busy making other plans.”', author: 'John Lennon' },
+  { text: '“Get busy living or get busy dying.”', author: 'Stephen King' },
+  { text: '“You only live once, but if you do it right, once is enough.”', author: 'Mae West' },
+  { text: '“Many of life’s failures are people who did not realize how close they were to success when they gave up.”', author: 'Thomas A. Edison' },
 ];
 
 const QuoteBox = ({ quote, handleNewQuote }) => (
@@ -51,7 +51,7 @@ const App = () => {
 };
 
 // Ensure the ID matches the one in your HTML
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const rootElement = document.getElementById('app'); // Use 'app' if that's the ID in your HTML
 
   if (rootElement) {
