@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client'; // Updated import for React 18
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const quoteData = [
   { text: '“The purpose of our lives is to be happy.”', author: 'Dalai Lama' },
@@ -18,6 +19,7 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
         id="new-quote"
         className="button"
         onClick={handleNewQuote}
+        type="button" // Added explicit type attribute
       >
         New Quote
       </button>
@@ -32,6 +34,15 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
     </div>
   </div>
 );
+
+// Define PropTypes for QuoteBox
+QuoteBox.propTypes = {
+  quote: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+  }).isRequired,
+  handleNewQuote: PropTypes.func.isRequired,
+};
 
 const getRandomIndex = () => Math.floor(Math.random() * quoteData.length);
 
@@ -49,5 +60,8 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+// Use createRoot instead of ReactDOM.render
+const root = ReactDOM.createRoot(document.querySelector('#app'));
+root.render(<App />);
+
 export default App;

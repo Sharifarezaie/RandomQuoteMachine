@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client'; // Correct import for React 18
+import PropTypes from 'prop-types'; // Import PropTypes
 import './App.css';
 
 const quoteData = [
@@ -14,11 +15,13 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
   <div id="quote-box">
     <p id="text">{quote.text}</p>
     <h2 id="author">{quote.author}</h2>
-    <div className="actions"> {/* Use className instead of class */}
+    <div className="actions">
+      {/* Use className instead of class */}
       <button
         id="new-quote"
         className="button"
         onClick={handleNewQuote}
+        type="button" // Added explicit type attribute
       >
         New Quote
       </button>
@@ -34,6 +37,15 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
   </div>
 );
 
+// Define PropTypes for QuoteBox
+QuoteBox.propTypes = {
+  quote: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+  }).isRequired,
+  handleNewQuote: PropTypes.func.isRequired,
+};
+
 const getRandomIndex = () => Math.floor(Math.random() * quoteData.length);
 
 const App = () => {
@@ -44,7 +56,8 @@ const App = () => {
   };
 
   return (
-    <div className="main"> {/* Use className instead of class */}
+    <div className="main">
+      {/* Use className instead of class */}
       <QuoteBox handleNewQuote={handleNewQuote} quote={quote} />
     </div>
   );
