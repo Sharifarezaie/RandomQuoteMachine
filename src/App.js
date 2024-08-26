@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/client'; // Updated import for React 18
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types'; // Ensure prop-types is imported
+import './App.css';
 
 const quoteData = [
   { text: '“The purpose of our lives is to be happy.”', author: 'Dalai Lama' },
@@ -19,15 +19,15 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
         id="new-quote"
         className="button"
         onClick={handleNewQuote}
-        type="button" // Added explicit type attribute
+        type="button" // Ensure button type is specified
       >
         New Quote
       </button>
       <a
         href="https://twitter.com/intent/tweet"
         id="tweet-quote"
-        target="_blank"
         rel="noreferrer"
+        target="_blank"
       >
         Tweet
       </a>
@@ -35,7 +35,6 @@ const QuoteBox = ({ quote, handleNewQuote }) => (
   </div>
 );
 
-// Define PropTypes for QuoteBox
 QuoteBox.propTypes = {
   quote: PropTypes.shape({
     text: PropTypes.string.isRequired,
@@ -59,9 +58,5 @@ const App = () => {
     </div>
   );
 };
-
-// Use createRoot instead of ReactDOM.render
-const root = ReactDOM.createRoot(document.querySelector('#app'));
-root.render(<App />);
 
 export default App;

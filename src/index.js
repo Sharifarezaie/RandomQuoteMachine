@@ -1,71 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client'; // Correct import for React 18
-import PropTypes from 'prop-types'; // Import PropTypes
-import './App.css';
+import App from './App'; // Import the App component
+import './index.css'; // Import your CSS if needed
 
-const quoteData = [
-  { text: '“The purpose of our lives is to be happy.”', author: 'Dalai Lama' },
-  { text: '“Life is what happens when you’re busy making other plans.”', author: 'John Lennon' },
-  { text: '“Get busy living or get busy dying.”', author: 'Stephen King' },
-  { text: '“You only live once, but if you do it right, once is enough.”', author: 'Mae West' },
-  { text: '“Many of life’s failures are people who did not realize how close they were to success when they gave up.”', author: 'Thomas A. Edison' },
-];
-
-const QuoteBox = ({ quote, handleNewQuote }) => (
-  <div id="quote-box">
-    <p id="text">{quote.text}</p>
-    <h2 id="author">{quote.author}</h2>
-    <div className="actions">
-      {/* Use className instead of class */}
-      <button
-        id="new-quote"
-        className="button"
-        onClick={handleNewQuote}
-        type="button" // Added explicit type attribute
-      >
-        New Quote
-      </button>
-      <a
-        href="https://twitter.com/intent/tweet"
-        id="tweet-quote"
-        rel="noreferrer"
-        target="_blank"
-      >
-        Tweet
-      </a>
-    </div>
-  </div>
-);
-
-// Define PropTypes for QuoteBox
-QuoteBox.propTypes = {
-  quote: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-  }).isRequired,
-  handleNewQuote: PropTypes.func.isRequired,
-};
-
-const getRandomIndex = () => Math.floor(Math.random() * quoteData.length);
-
-const App = () => {
-  const [quote, setQuote] = React.useState(quoteData[getRandomIndex()]);
-
-  const handleNewQuote = () => {
-    setQuote(quoteData[getRandomIndex()]);
-  };
-
-  return (
-    <div className="main">
-      {/* Use className instead of class */}
-      <QuoteBox handleNewQuote={handleNewQuote} quote={quote} />
-    </div>
-  );
-};
-
-// Ensure the ID matches the one in your HTML
 document.addEventListener('DOMContentLoaded', () => {
-  const rootElement = document.getElementById('app'); // Use 'app' if that's the ID in your HTML
+  const rootElement = document.getElementById('app'); // Ensure this matches your HTML
 
   if (rootElement) {
     const root = ReactDOM.createRoot(rootElement); // Create root
